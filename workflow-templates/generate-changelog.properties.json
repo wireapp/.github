@@ -1,5 +1,5 @@
 {
     "name": "Automatic Changelog Generation",
-    "description": "Generates a changelog from Git tags and attaches it in GitHub releases.",
+    "description": "Generates a changelog from Git tags and attaches it to GitHub releases.",
     "iconName": "wire"
 }
