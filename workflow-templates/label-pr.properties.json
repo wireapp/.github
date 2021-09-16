@@ -1,0 +1,5 @@
+{
+    "name": "Automatic Label PRs",
+    "description": "Automatically label a PR based on the files changed and the amount of changes.",
+    "iconName": "wire-label"
+}
