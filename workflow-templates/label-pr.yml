@@ -1,11 +1,14 @@
-name: "Pull Request Labeler"
+name: "Label Pull Request"
+
 on:
-- pull_request_target
+  pull_request:
+    types: [opened, synchronize]
 
 jobs:
-  triage:
+  label:
+    name: Label PR based on title
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/labeler@v3
-      with:
-        repo-token: "${{secrets.OTTO_THE_BOT_GH_TOKEN}}"
+      - uses: srvaroa/labeler@v0.3
+        env:
+          GITHUB_TOKEN: ${{secrets.OTTO_THE_BOT_GH_TOKEN}}
