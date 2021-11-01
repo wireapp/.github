@@ -1,0 +1,5 @@
+{
+    "name": "Link and Lint PRs to JIRA",
+    "description": "Adds a link to the Jira issue mentioned in the PR title",
+    "iconName": "wire"
+}
