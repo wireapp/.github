@@ -114,6 +114,14 @@ For a complete description see https://github.com/marketplace/actions/jira-descr
 
 To add this action click on `Actions` in the top bar of the target repository, scroll to `Workflows created by Wire Swiss GmbH` and click `Set up this workflow`.
 
+## Lint the title of a PR according to Semantic Commit messages
+
+For a complete description see https://github.com/marketplace/actions/semantic-pull-request
+
+### Setup
+
+To add this action click on `Actions` in the top bar of the target repository, scroll to `Workflows created by Wire Swiss GmbH` and click `Set up this workflow`.
+
 
 
 
