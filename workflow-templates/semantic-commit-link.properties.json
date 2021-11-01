@@ -1,0 +1,5 @@
+{
+    "name": "Semantic Commit Linting for PR titles",
+    "description": "Lint the title of a PR according to semantic commit specification",
+    "iconName": "wire"
+}
