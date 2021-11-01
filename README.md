@@ -106,6 +106,15 @@ In the `.github` folder in your repo, create a file called `labeler.yml` like th
 Add Otto-the-bot as "triage" to the target repository, make sure someone in the Web Chapter accepts the request.
 Otto's github token, shared as organization secret, also needs to be made available to the target repo.
 
+## Lint and Link PRs to JIRA
+
+For a complete description see https://github.com/marketplace/actions/jira-description
+
+### Setup
+
+To add this action click on `Actions` in the top bar of the target repository, scroll to `Workflows created by Wire Swiss GmbH` and click `Set up this workflow`.
+
+
 
 
 
