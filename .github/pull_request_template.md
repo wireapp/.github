@@ -4,7 +4,7 @@
 - The **PR Title**
   - [ ] conforms to the style of [semantic commits messages](https://sparkbox.com/foundry/semantic_commit_messages) supported in [Wire's Github Workflow](https://github.com/wireapp/.github#usage).
   - [ ] contains a reference [JIRA](https://wearezeta.atlassian.net) issue number like `SQPIT-764`
-  - [ ] answers the question: _If merged, this PR will: ..._ . E.g. `feature(conversation-list): Sort conversions by most emojis in the title #SQPIT-764`.
+  - [ ] answers the question: _If merged, this PR will: ..._ . E.g. `feature(conversation-list): Sort conversations by most emojis in the title #SQPIT-764`.
 - The **PR Branch**
   - [ ] contains reference JIRA issue number like `SQPIT-764`. E. g. `feature/add-this-new-thing-#SQPIT-764`
 - The **PR Description**
