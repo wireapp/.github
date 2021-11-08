@@ -13,6 +13,12 @@
 
 # What's new in this PR?
 
+<!--do not remove this marker, its needed to replace info when ticket title is updated -->
+<!--jira-description-action-hidden-marker-start-->
+
+<!--jira-description-action-hidden-marker-end-->
+<!--do not remove this marker, its needed to replace info when ticket title is updated -->
+
 ### Issues
 
 _Briefly describe the issue you have solved or implemented with this pull request. If the PR contains multiple issues, use a bullet list._
