@@ -50,11 +50,11 @@ _Specify here any other facts that you think are important for this issue._
 _Attachments like images, videos, etc. (drag and drop in the text box)_
 
 ----
-#### PR Post Submission Checklist for internal contributors
+#### PR Post Submission Checklist for internal contributors (Optional)
 
  - [ ] Wire's Github Workflow has automatically linked the PR to a JIRA issue
 ----
 #### PR Post Merge Checklist for internal contributors
 
- - [ ] If any soft of configuration variable was introducted by this PR, it has been added to the relevant documents and the CI jobs have been updated.
+ - [ ] If any soft of configuration variable was introduced by this PR, it has been added to the relevant documents and the CI jobs have been updated.
 ----
