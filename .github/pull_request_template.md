@@ -2,9 +2,10 @@
 #### PR Submission Checklist for internal contributors
 
 - The **PR Title**
-  - [ ] conforms to the style of [semantic commits messages](https://sparkbox.com/foundry/semantic_commit_messages) supported in [Wire's Github Workflow](https://github.com/wireapp/.github#usage).
-  - [ ] contains a reference [JIRA](https://wearezeta.atlassian.net) issue number like `SQPIT-764`
+  - [ ] conforms to the style of semantic commits messages¹ supported in Wire's Github Workflow²
+  - [ ] contains a reference JIRA issue number like `SQPIT-764`
   - [ ] answers the question: _If merged, this PR will: ..._ . E.g. `feature(conversation-list): Sort conversations by most emojis in the title #SQPIT-764`.
+
 - The **PR Description**
   - [ ] is free of optional paragraphs and you have filled the relevant parts to the best of your ability
 ----
@@ -58,3 +59,5 @@ _Attachments like images, videos, etc. (drag and drop in the text box)_
 
  - [ ] If any soft of configuration variable was introduced by this PR, it has been added to the relevant documents and the CI jobs have been updated.
 ----
+##### References
+[1](https://sparkbox.com/foundry/semantic_commit_messages) [2](https://github.com/wireapp/.github#usage) [3](https://wearezeta.atlassian.net)
