@@ -56,4 +56,4 @@ _Attachments like images, videos, etc. (drag and drop in the text box)_
 ##### References
 1. https://sparkbox.com/foundry/semantic_commit_messages
 1. https://github.com/wireapp/.github#usage
-1. E.g. `feature(conversation-list): Sort conversations by most emojis in the title #SQPIT-764`.
+1. E.g. `feat(conversation-list): Sort conversations by most emojis in the title #SQPIT-764`.
