@@ -34,6 +34,12 @@ Needs releases with:
 
 ### Testing
 
+#### Test Coverage (Optional)
+
+- [ ] I have added automated test to this contribution
+
+#### How to Test
+
 _Briefly describe how this change was tested and if applicable the exact steps taken to verify that it works as expected._
 
 ### Notes (Optional)
