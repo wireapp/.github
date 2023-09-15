@@ -1,3 +1,3 @@
-# Wire™
+# Wire - Secure Communication
 
-Wire is an encrypted communication and collaboration platform, based on edge computing and zero trust architecture. Read more about [the company](https://wire.com) and the [open source code](https://github.com/wireapp/wire). Also, ➡️ *[we are hiring](https://start.wire.com/careers-en)* ⬅️.
+Wire is the most secure platform for messaging, audio, and video calls, based on edge computing and zero knowledge architecture. The company is headquartered in Berlin and serves clients in the area of government, law enforcement as well as providers of public services and critical infrastructure. Wire is an initiator and a key contributor to the [MLS standard](https://wire.com/en/blog/wire-welcomes-the-publication-of-messaging-layer-security-as-rfc-9420/) for secure communication in large groups. Read more about [the company](https://wire.com) and the [open source code](https://github.com/wireapp/wire). Also, ➡️ *[we are hiring](https://www.linkedin.com/company/wire-secure-communication/jobs)* ⬅️.
