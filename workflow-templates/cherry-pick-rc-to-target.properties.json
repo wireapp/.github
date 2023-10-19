@@ -1,0 +1,5 @@
+{
+    "name": "Automatic Cherry-pick from release candidate to target branch",
+    "description": "Automates the process of cherry-picking merged PRs from `release/candidate` branch to `TARGET_BRANCH`",
+    "iconName": "wire"
+}
