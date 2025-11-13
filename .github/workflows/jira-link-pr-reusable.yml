@@ -1,0 +1,95 @@
+name: Link and Lint PR with Jira Ticket Number (Reusable)
+
+on:
+  workflow_call:
+    inputs:
+      jira-base-url:
+        description: 'Base URL for Jira instance'
+        required: false
+        default: 'https://wearezeta.atlassian.net'
+        type: string
+      version-name:
+        description: 'Version name to compare against fix version'
+        required: false
+        default: ''
+        type: string
+      fix-version-regex:
+        description: 'Regex pattern to extract version from fix version field'
+        required: false
+        default: '(?:^|[\s\-_])(v?\d+\.\d+(?:\.\d+)?(?:[\-\+][\w\.\-]*)?)'
+        type: string
+      skip-branches:
+        description: 'Regex pattern for branches to skip'
+        required: false
+        type: string
+        default: '^(production-release|main|master|release\/v\d+)$'
+      skip-actors:
+        description: 'Comma-separated list of actors (users/bots) to skip (e.g., "dependabot[bot],AndroidBob")'
+        required: false
+        type: string
+        default: ''
+    secrets:
+      GITHUB_TOKEN:
+        required: true
+      JIRA_TOKEN:
+        required: true
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  add-jira-description:
+    runs-on: ubuntu-latest
+    # Run only if the PR is not from a Fork / external contributor
+    if: ${{ github.repository_owner == 'wireapp' }}
+    steps:
+
+      - name: Check for skipped actors
+        id: check-skip
+        run: |
+          SKIP_ACTORS="${{ inputs.skip-actors }}"
+          ACTOR="${{ github.actor }}"
+
+          # Check if current actor should be skipped
+          SHOULD_SKIP=false
+          IFS=',' read -ra SKIP_ARRAY <<< "$SKIP_ACTORS"
+          for skip_actor in "${SKIP_ARRAY[@]}"; do
+            # Trim whitespace
+            skip_actor=$(echo "$skip_actor" | xargs)
+            if [ "$ACTOR" == "$skip_actor" ]; then
+              SHOULD_SKIP=true
+              echo "PR created by $ACTOR (in skip list), exiting successfully"
+              break
+            fi
+          done
+
+          echo "should_skip=$SHOULD_SKIP" >> $GITHUB_OUTPUT
+
+      - name: Skip if actor is in skip list
+        if: steps.check-skip.outputs.should_skip == 'true'
+        run: exit 0
+
+      - uses: mohamadjaara/jira-description-action@feat/option-to-fail-based-on-fix-version
+        name: jira-description-action (with compare-fix-version)
+        if: ${{ steps.check-skip.outputs.should_skip != 'true' && inputs.version-name != '' }}
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          jira-token: ${{ secrets.JIRA_TOKEN }}
+          jira-base-url: ${{ inputs.jira-base-url }}
+          skip-branches: ${{ inputs.skip-branches }}
+          fail-when-jira-issue-not-found: true
+          skip-ticket-title: true
+          compare-fix-version: ${{ inputs.version-name }}
+          fix-version-regex: ${{ inputs.fix-version-regex }}
+
+      - uses: mohamadjaara/jira-description-action@feat/option-to-fail-based-on-fix-version
+        name: jira-description-action (without compare-fix-version)
+        if: ${{ steps.check-skip.outputs.should_skip != 'true' && inputs.version-name == '' }}
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          jira-token: ${{ secrets.JIRA_TOKEN }}
+          jira-base-url: ${{ inputs.jira-base-url }}
+          skip-branches: ${{ inputs.skip-branches }}
+          fail-when-jira-issue-not-found: true
+          skip-ticket-title: true
