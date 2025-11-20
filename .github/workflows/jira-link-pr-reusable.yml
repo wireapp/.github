@@ -83,7 +83,7 @@ jobs:
           compare-fix-version: ${{ inputs.version-name }}
           fix-version-regex: ${{ inputs.fix-version-regex }}
 
-      - uses: mohamadjaara/jira-description-action@feat/option-to-fail-based-on-fix-version
+      - uses: mohamadjaara/jira-description-action@139dfb4e202993bdcac44d185423fe11880d85c8
         name: jira-description-action (without compare-fix-version)
         if: ${{ steps.check-skip.outputs.should_skip != 'true' && inputs.version-name == '' }}
         with:
