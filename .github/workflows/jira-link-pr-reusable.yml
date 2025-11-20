@@ -29,9 +29,9 @@ on:
         type: string
         default: ''
     secrets:
-      GH_TOKEN:
+      github-token:
         required: true
-      JIRA_TOKEN:
+      jira-token:
         required: true
 
 permissions:
@@ -70,12 +70,12 @@ jobs:
         if: steps.check-skip.outputs.should_skip == 'true'
         run: exit 0
 
-      - uses: mohamadjaara/jira-description-action@feat/option-to-fail-based-on-fix-version
+      - uses: mohamadjaara/jira-description-action@139dfb4e202993bdcac44d185423fe11880d85c8
         name: jira-description-action (with compare-fix-version)
         if: ${{ steps.check-skip.outputs.should_skip != 'true' && inputs.version-name != '' }}
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          jira-token: ${{ secrets.JIRA_TOKEN }}
+          github-token: ${{ secrets.github-token }}
+          jira-token: ${{ secrets.jira-token }}
           jira-base-url: ${{ inputs.jira-base-url }}
           skip-branches: ${{ inputs.skip-branches }}
           fail-when-jira-issue-not-found: true
@@ -87,8 +87,8 @@ jobs:
         name: jira-description-action (without compare-fix-version)
         if: ${{ steps.check-skip.outputs.should_skip != 'true' && inputs.version-name == '' }}
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          jira-token: ${{ secrets.JIRA_TOKEN }}
+          github-token: ${{ secrets.github-token }}
+          jira-token: ${{ secrets.jira-token }}
           jira-base-url: ${{ inputs.jira-base-url }}
           skip-branches: ${{ inputs.skip-branches }}
           fail-when-jira-issue-not-found: true
