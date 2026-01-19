@@ -108,11 +108,37 @@ Otto's github token, shared as organization secret, also needs to be made availa
 
 ## Lint and Link PRs to JIRA
 
-For a complete description see https://github.com/marketplace/actions/jira-description
+Use the reusable workflow in this repo instead of the base action.
 
-### Setup
+### Setup (Reusable Workflow)
 
-To add this action click on `Actions` in the top bar of the target repository, scroll to `Workflows created by Wire Swiss GmbH` and click `Set up this workflow`.
+Create a workflow in your repository that calls the reusable workflow from this repo:
+
+```yml
+name: Link and Lint PR with Jira Ticket Number
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened, ready_for_review]
+
+jobs:
+  link-jira:
+    uses: wireapp/.github/.github/workflows/jira-link-pr-reusable.yml@main
+    with:
+      # Optional: override defaults below
+      # jira-base-url: https://wearezeta.atlassian.net
+      # version-name: ''            # omit or leave empty to skip compare
+      # fix-version-regex: '(?:^|[\s\-_])(v?\d+\.\d+(?:\.\d+)?(?:[\-\+][\w\.\-]*)?)'
+      # skip-branches: '^(production-release|main|master|release\/v\d+)$'
+      # skip-actors: 'dependabot[bot],AndroidBob'
+    secrets:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # Map your org/repo secret containing the Jira token
+      JIRA_TOKEN: ${{ secrets.OTTO_THE_BOT_JIRA_TOKEN }}
+```
+
+Notes:
+- `version-name` is optional. If omitted or empty, the workflow will not pass `compare-fix-version` to the underlying action.
 
 ### Example
 
