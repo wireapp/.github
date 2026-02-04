@@ -18,6 +18,11 @@ on:
         required: false
         default: '(?:^|[\s\-_])(v?\d+\.\d+(?:\.\d+)?(?:[\-\+][\w\.\-]*)?)'
         type: string
+      fix-version-wildcards:
+        description: 'Wildcard value(s) that should satisfy any fix version'
+        required: false
+        default: 'Not applicable'
+        type: string
       skip-branches:
         description: 'Regex pattern for branches to skip'
         required: false
@@ -70,7 +75,7 @@ jobs:
         if: steps.check-skip.outputs.should_skip == 'true'
         run: exit 0
 
-      - uses: mohamadjaara/jira-description-action@139dfb4e202993bdcac44d185423fe11880d85c8
+      - uses: mohamadjaara/jira-description-action@4d1599ced68293a207a37e650bf9e15192e415be
         name: jira-description-action (with compare-fix-version)
         if: ${{ steps.check-skip.outputs.should_skip != 'true' && inputs.version-name != '' }}
         with:
@@ -82,8 +87,9 @@ jobs:
           skip-ticket-title: true
           compare-fix-version: ${{ inputs.version-name }}
           fix-version-regex: ${{ inputs.fix-version-regex }}
+          fix-version-wildcards: ${{ inputs.fix-version-wildcards }}
 
-      - uses: mohamadjaara/jira-description-action@139dfb4e202993bdcac44d185423fe11880d85c8
+      - uses: mohamadjaara/jira-description-action@4d1599ced68293a207a37e650bf9e15192e415be
         name: jira-description-action (without compare-fix-version)
         if: ${{ steps.check-skip.outputs.should_skip != 'true' && inputs.version-name == '' }}
         with:
@@ -93,3 +99,4 @@ jobs:
           skip-branches: ${{ inputs.skip-branches }}
           fail-when-jira-issue-not-found: true
           skip-ticket-title: true
+          fix-version-wildcards: ${{ inputs.fix-version-wildcards }}

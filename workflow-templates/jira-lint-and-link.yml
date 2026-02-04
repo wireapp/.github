@@ -30,6 +30,7 @@ jobs:
       skip-actors: 'dependabot[bot],AndroidBob'
       version-name: ${{ needs.get-version.outputs.version_name }}
       fix-version-regex: '(?:^|[\s\-_])(v?\d+\.\d+(?:\.\d+)?(?:[\-\+][\w\.\-]*)?)'
+      fix-version-wildcards: 'Not applicable'
     secrets:
       github-token: ${{ secrets.GITHUB_TOKEN }}
       jira-token: ${{ secrets.JIRA_TOKEN }}

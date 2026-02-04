@@ -129,6 +129,7 @@ jobs:
       # jira-base-url: https://wearezeta.atlassian.net
       # version-name: ''            # omit or leave empty to skip compare
       # fix-version-regex: '(?:^|[\s\-_])(v?\d+\.\d+(?:\.\d+)?(?:[\-\+][\w\.\-]*)?)'
+      # fix-version-wildcards: 'Not applicable'
       # skip-branches: '^(production-release|main|master|release\/v\d+)$'
       # skip-actors: 'dependabot[bot],AndroidBob'
     secrets:
@@ -139,6 +140,7 @@ jobs:
 
 Notes:
 - `version-name` is optional. If omitted or empty, the workflow will not pass `compare-fix-version` to the underlying action.
+- `fix-version-wildcards` defaults to `Not applicable` and can be overridden to match your Jira fix-version wildcard value(s).
 
 ### Example
 
