@@ -75,7 +75,7 @@ jobs:
         if: steps.check-skip.outputs.should_skip == 'true'
         run: exit 0
 
-      - uses: mohamadjaara/jira-description-action@4d1599ced68293a207a37e650bf9e15192e415be
+      - uses: mohamadjaara/jira-description-action@55ecdef1c2a8affa109c5889a7c0b2aa985f9191
         name: jira-description-action (with compare-fix-version)
         if: ${{ steps.check-skip.outputs.should_skip != 'true' && inputs.version-name != '' }}
         with:
@@ -89,7 +89,7 @@ jobs:
           fix-version-regex: ${{ inputs.fix-version-regex }}
           fix-version-wildcards: ${{ inputs.fix-version-wildcards }}
 
-      - uses: mohamadjaara/jira-description-action@4d1599ced68293a207a37e650bf9e15192e415be
+      - uses: mohamadjaara/jira-description-action@55ecdef1c2a8affa109c5889a7c0b2aa985f9191
         name: jira-description-action (without compare-fix-version)
         if: ${{ steps.check-skip.outputs.should_skip != 'true' && inputs.version-name == '' }}
         with:
