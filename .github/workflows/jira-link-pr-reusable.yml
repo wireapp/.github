@@ -52,10 +52,10 @@ jobs:
 
       - name: Check for skipped actors
         id: check-skip
+        env:
+          SKIP_ACTORS: ${{ inputs.skip-actors }}
+          ACTOR: ${{ github.actor }}
         run: |
-          SKIP_ACTORS="${{ inputs.skip-actors }}"
-          ACTOR="${{ github.actor }}"
-
           # Check if current actor should be skipped
           SHOULD_SKIP=false
           IFS=',' read -ra SKIP_ARRAY <<< "$SKIP_ACTORS"
@@ -69,7 +69,7 @@ jobs:
             fi
           done
 
-          echo "should_skip=$SHOULD_SKIP" >> $GITHUB_OUTPUT
+          echo "should_skip=$SHOULD_SKIP" >> "$GITHUB_OUTPUT"
 
       - name: Skip if actor is in skip list
         if: steps.check-skip.outputs.should_skip == 'true'
