@@ -4,11 +4,15 @@ on:
   pull_request:
     types: [opened, edited, synchronize]
 
+permissions:
+  contents: read
+  pull-requests: write
+
 jobs:
   label:
     name: Label PR based on title
     runs-on: ubuntu-latest
     steps:
-      - uses: srvaroa/labeler@v0.3
+      - uses: srvaroa/labeler@052ceaca82fb9fe4706b4bdb0712da09853c3fd2 # v0.3
         env:
-          GITHUB_TOKEN: ${{secrets.OTTO_THE_BOT_GH_TOKEN}}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

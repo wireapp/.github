@@ -101,10 +101,7 @@ In the `.github` folder in your repo, create a file called `labeler.yml` like th
    - 'README.md'
 ```
 
-### Step 3
-
-Add Otto-the-bot as "triage" to the target repository, make sure someone in the Web Chapter accepts the request.
-Otto's github token, shared as organization secret, also needs to be made available to the target repo.
+The workflow uses the repository's own `GITHUB_TOKEN`, so no bot token is needed.
 
 ## Lint and Link PRs to JIRA
 
@@ -133,9 +130,9 @@ jobs:
       # skip-branches: '^(production-release|main|master|release\/v\d+)$'
       # skip-actors: 'dependabot[bot],AndroidBob'
     secrets:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      github-token: ${{ secrets.GITHUB_TOKEN }}
       # Map your org/repo secret containing the Jira token
-      JIRA_TOKEN: ${{ secrets.OTTO_THE_BOT_JIRA_TOKEN }}
+      jira-token: ${{ secrets.OTTO_THE_BOT_JIRA_TOKEN }}
 ```
 
 Notes:
